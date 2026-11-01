@@ -1,0 +1,50 @@
+/*
+ * Menüs aus der asiatischen und mexikanischen Küche
+ * [id, titel, kategorie, emoji, farbe1, farbe2, beschreibung, [gänge]]
+ */
+[
+  ['mn-as-ramen-abend', 'Japanischer Ramen-Abend', 'alltag', '🍜', '#FFE082', '#8D6E63',
+    'Japanisch-asiatisch: Ramen-Eier als Snack, Miso-Ramen als Hauptgang und Matcha-Eis zum Abschluss.',
+    ['as-ramen-eier', 'as-miso-ramen', 'as-matcha-eis']],
+  ['mn-as-indien', 'Indisches Festessen', 'alltag', '🍛', '#FF8A65', '#FFF3E0',
+    'Indisch: Knoblauch-Naan, saftiges Tandoori-Hähnchen und duftendes Kheer.',
+    ['as-naan', 'as-tandoori-huhn', 'as-kheer']],
+  ['mn-as-indien-veggie', 'Vegetarisch durch Indien', 'alltag', '🥬', '#43A047', '#FFE0B2',
+    'Indisch und vegetarisch: Naan, Palak Paneer und zum Abschluss ein Mango Lassi.',
+    ['as-naan', 'as-palak-paneer', 'as-mango-lassi']],
+  ['mn-as-thai', 'Thailändische Reise', 'alltag', '🌶️', '#FF5722', '#A5D6A7',
+    'Thailändisch: scharf-saure Tom Yum, Panang-Curry mit Rind und Kokos-Pandan-Pudding.',
+    ['as-tom-yum', 'as-panang', 'as-kokos-panna-cotta']],
+  ['mn-as-taiwan', 'Nachtmarkt in Taipeh', 'alltag', '🏮', '#795548', '#FFCC80',
+    'Taiwanesisch: Popcorn Chicken, Rindfleisch-Nudelsuppe und Bubble Tea – wie auf dem Nachtmarkt.',
+    ['as-popcorn-chicken', 'as-beef-noodle', 'as-bubble-tea']],
+  ['mn-as-korea', 'Seoul bei Nacht', 'alltag', '🇰🇷', '#D32F2F', '#FFE082',
+    'Koreanisch: Mandu-Teigtaschen, Korean Fried Chicken und süße Hotteok.',
+    ['as-mandu', 'as-korean-fried-chicken', 'as-hotteok']],
+  ['mn-as-vietnam', 'Vietnamesisch frisch', 'alltag', '🌿', '#C8E6C9', '#8D6E63',
+    'Vietnamesisch-asiatisch: Sommerrollen, Bún Chả und japanische Mochi als Dessert.',
+    ['as-sommerrollen', 'as-bun-cha', 'as-mochi']],
+  ['mn-as-sterne-japan', 'Japanisches Sternemenü', 'sterne', '🎌', '#E1F5FE', '#B71C1C',
+    'Asiatische Sterneküche: Hamachi mit Yuzu-Ponzu, Jakobsmuscheln in Dashi, Rinderfilet-Tataki und Yuzu-Tarte.',
+    ['as-st-hamachi-ponzu', 'as-st-jakobs-dashi', 'as-st-wagyu-tataki', 'as-st-yuzu-tarte']],
+  ['mn-as-sterne-asien', 'Sternereise durch Asien', 'sterne', '✨', '#E64A19', '#66BB6A',
+    'Asiatische Sterneküche: Har Gow mit Trüffel, Hummer mit Thai-Curry-Schaum, Tandoori-Lamm und Pandan-Soufflé.',
+    ['as-st-dim-sum-trueffel', 'as-st-hummer-curry', 'as-st-tandoori-lamm', 'as-st-pandan-souffle']],
+  ['mn-as-sterne-korea-china', 'Korea trifft China – Sternemenü', 'sterne', '🥢', '#C62828', '#4E342E',
+    'Asiatische Sterneküche: Hamachi, Schweinebauch mit Kimchi-Gel, Ente mit Fünf-Gewürze-Jus und Matcha-Eis.',
+    ['as-st-hamachi-ponzu', 'as-st-kimchi-schwein', 'as-st-ente-fuenfgewuerz', 'as-matcha-eis']],
+  ['mn-mx-fiesta', 'Tacos und Salsas', 'alltag', '🌮', '#E65100', '#43A047',
+    'Mexikanisch: Salsa-Trio mit Chips, Tacos al Pastor und Arroz con Leche.',
+    ['mx-salsa-trio', 'mx-al-pastor', 'mx-arroz-leche']],
+  ['mn-mx-streetfood', 'Mexikanisches Streetfood', 'alltag', '🌽', '#FFEB3B', '#B71C1C',
+    'Mexikanisch: Elotes, Birria-Tacos mit Consommé und saftiger Pastel de Elote.',
+    ['mx-elotes', 'mx-birria', 'mx-pastel-elote']],
+  ['mn-mx-sonntag', 'Mexikanischer Sonntag', 'alltag', '🍲', '#C62828', '#FFE082',
+    'Mexikanisch: Sopa de Tortilla, Huhn in Mole Poblano und Churros mit Schokolade.',
+    ['mx-sopa-tortilla', 'mx-mole', 'ds-churros']],
+  ['mn-mx-sterne', 'Mexikanisches Sternemenü', 'sterne', '⭐', '#212121', '#43A047',
+    'Mexikanische Sterneküche: Garnelen-Aguachile, Taco vom Rinderfilet, Ente mit Mole Negro und Schokoladen-Chili-Tarte.',
+    ['mx-st-aguachile', 'mx-st-wagyu-taco', 'mx-st-ente-mole', 'mx-st-schoko-chili']]
+].forEach(([id, titel, kategorie, emoji, f1, f2, beschreibung, gaenge]) => {
+  window.MENUES.push({ id, titel, kategorie, emoji, farbe: [f1, f2], beschreibung, gaenge });
+});
