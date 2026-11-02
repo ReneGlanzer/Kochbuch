@@ -1,5 +1,5 @@
 // Offline-Cache. Bei Änderungen an der App die Versionsnummer erhöhen.
-const CACHE = 'kochbuch-v10';
+const CACHE = 'kochbuch-v11';
 const DATEIEN = [
   './', 'index.html', 'tablet.html', 'manifest.json', 'css/style.css', 'js/app.js', 'js/rezepte.js', 'js/rezepte-henssler.js', 'js/rezepte-ramsay.js',
   'js/kurzform.js', 'js/rezepte-gesund.js', 'js/rezepte-schnell.js',
@@ -14,6 +14,7 @@ const DATEIEN = [
   'js/rezepte-vorrat.js',
   'js/rezepte-billig.js',
   'js/rezepte-amerikanisch.js',
+  'js/rezepte-backen.js',
   'js/menues-welt.js',
   'icons/icon.svg', 'icons/icon-192.png', 'icons/icon-512.png'
 ];

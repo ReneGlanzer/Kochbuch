@@ -49,6 +49,7 @@ In `js/rezepte.js` ein bestehendes Rezept kopieren, eine neue `id` vergeben und 
 | `js/rezepte-vorrat.js` | 30 Rezepte mit Zutaten, die man meist zuhause hat |
 | `js/rezepte-billig.js` | 20 Rezepte mit günstigen Zutaten |
 | `js/rezepte-amerikanisch.js` | 30 American Klassiker |
+| `js/rezepte-backen.js` | 100 Backrezepte: Sauerteig & Starter, Brot, Toast, Brioche, Gebäck, Kuchen (Schnellsuche „Backen“) |
 | `js/menues-welt.js` | 14 asiatische und mexikanische Menüs |
 | `manifest.json`, `sw.js`, `icons/` | Installation auf dem Tablet und Offline-Betrieb |
 

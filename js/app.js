@@ -49,7 +49,8 @@
     oesterreich: '🏔️ Österreichischer Klassiker',
     vorrat: '🏠 Aus dem Vorrat – geht immer',
     billig: '💶 Günstig kochen',
-    amerikanisch: '🍔 American Klassiker'
+    amerikanisch: '🍔 American Klassiker',
+    backen: '🥖 Backen'
   };
 
   // Suchtext pro Rezept/Menü: Titel, Beschreibung, Schlagwort, Koch und Zutaten
@@ -57,6 +58,7 @@
   // Jedes Rezept bekommt getrennte Suchfelder, damit Treffer im Titel weiter oben landen
   REZEPTE.forEach(r => {
     r.sTitel = normal(r.titel);
+    r.sThema = normal(r.thema || '');
     r.sKopf = normal([r.thema, THEMA_NAMEN[r.thema], r.inspiration, katName(r.kategorie)].filter(Boolean).join(' '));
     r.sText = normal(r.beschreibung);
     r.sZutaten = normal(r.zutaten.map(z => z.name).join(' '));
@@ -92,13 +94,16 @@
     ['vietnam', 'vietnamesisch'], ['deutsch', 'deutschland', 'german'], ['osterreich', 'wiener', 'austria'],
     ['italien', 'italienisch'], ['billig', 'gunstig', 'preiswert', 'sparen'], ['vorrat', 'vorratsschrank'],
     ['schnell', 'quick', 'blitz'], ['gesund', 'leicht', 'healthy'], ['sterne', 'gourmet', 'fine dining'],
-    ['luxus', 'luxury', 'edel'], ['fruhstuck', 'breakfast', 'brunch'], ['kuchen', 'torte', 'cake'], ['keks', 'cookie', 'platzchen']
+    ['luxus', 'luxury', 'edel'], ['fruhstuck', 'breakfast', 'brunch'], ['kuchen', 'torte', 'cake'], ['keks', 'cookie', 'platzchen'],
+    ['backen', 'baking', 'backrezept'], ['brot', 'bread'], ['sauerteig', 'sourdough']
   ];
   const SYN_INDEX = new Map();
   SYNONYME.forEach(g => g.forEach(w => SYN_INDEX.set(w, g)));
 
   // Einfache Wortstämme: "Nudeln" findet "Nudel", "Burgers" findet "Burger"
+  const UNGEKUERZT = new Set(['kuchen']); // sonst wird „kuchen“ zu „kuche“ und findet „Küche“
   function stamm(w) {
+    if (UNGEKUERZT.has(w)) return w;
     if (w.length > 6 && w.endsWith('en')) return w.slice(0, -2);
     if (w.length > 5 && /[nse]$/.test(w)) return w.slice(0, -1);
     return w;
@@ -175,6 +180,7 @@
     for (const v of anfrage.teile) {
       let p = 0;
       for (const x of v) {
+        if (e.sThema && e.sThema === x) p = Math.max(p, 16);
         if (e.sTitel.startsWith(x)) p = Math.max(p, 14);
         else if (e.sTitel.includes(' ' + x) || e.sTitel.includes('-' + x)) p = Math.max(p, 12);
         else if (e.sTitel.includes(x)) p = Math.max(p, 6);
@@ -387,6 +393,7 @@
     if (!VT || ersteSeite) { ersteSeite = false; fn(); rueckwaerts = false; return; }
     document.documentElement.dataset.richtung = rueckwaerts ? 'zurueck' : 'vor';
     const t = document.startViewTransition(() => { inUebergang = true; try { fn(); } finally { inUebergang = false; } });
+    t.ready.catch(() => {});
     t.finished.finally(() => { $$('.vt-held').forEach(el => el.classList.remove('vt-held')); rueckwaerts = false; });
   }
 
@@ -589,7 +596,7 @@
   const SCHNELLSUCHE = [
     ['🍜', 'Ramen'], ['🥢', 'Asiatisch'], ['🍛', 'Indisch'], ['🌶️', 'Thailändisch'], ['🇰🇷', 'Koreanisch'],
     ['🧋', 'Taiwanesisch'], ['🌮', 'Mexikanisch'], ['🍔', 'Amerikanisch'], ['🥨', 'Deutsch'], ['🏔️', 'Österreich'],
-    ['🏠', 'Vorrat'], ['💶', 'Günstig'], ['⚡', 'Schnell'], ['🥦', 'Gesund'], ['🐔', 'Huhn'], ['🍝', 'Pasta']
+    ['🏠', 'Vorrat'], ['💶', 'Günstig'], ['⚡', 'Schnell'], ['🥦', 'Gesund'], ['🐔', 'Huhn'], ['🍝', 'Pasta'], ['🥖', 'Backen']
   ];
 
   function setzeSuche(text, feldSetzen) {
